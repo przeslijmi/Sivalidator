@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace Przeslijmi\Sivalidator;
 
@@ -14,39 +14,43 @@ class TypeHinting
      * Tests if array consists of elements given type.
      *
      * ## Usage example
-     * TypeHinting::isArrayOf($array, 'Namespace/Class');
+     * ```
+     * $array = [ (new \stdClass()), (new \stdClass()), (new \stdClass()) ];
+     * TypeHinting::isArrayOf($array, 'Namespace\Class');
+     * ```
      *
-     * @param  array  $arrayOfObjects Array to be checked.
-     * @param  string $className      Name of the class that is expected.
-     * @param  bool   $throw          (opt., true) Set to false to prevent throwing.
-     * @throws TypeHintingFailException
+     * @param array   $arrayOfObjects Array to be checked.
+     * @param string  $className      Name of the class that is expected.
+     * @param boolean $throw          Opt., true. Set to false to prevent throwing.
+     *
+     * @throws TypeHintingFailException If this is not array of given objects.
      * @since  v1.0
-     * @return bool
+     * @return boolean
      */
-    public static function isArrayOf(array $arrayOfObjects, string $className, bool $throw=true) : bool
+    public static function isArrayOf(array $arrayOfObjects, string $className, bool $throw = true) : bool
     {
 
-        // lvd
+        // Lvd.
         $test = true;
-        $isa = '';
+        $isa  = '';
 
-        // test
+        // Test.
         foreach ($arrayOfObjects as $object) {
 
-            if (!is_object($object)) {
+            if (is_object($object) === false) {
                 $test = false;
-                $isa = gettype($object) . '[]';
+                $isa  = gettype($object) . '[]';
                 break;
             }
 
-            if (!is_a($object, $className)) {
+            if (is_a($object, $className) === false) {
                 $test = false;
-                $isa = get_class($object) . '[]';
+                $isa  = get_class($object) . '[]';
                 break;
             }
         }
 
-        // throw
+        // Throw.
         if ($throw === true && $test === false) {
             throw new TypeHintingFailException($className . '[]', $isa);
         }
@@ -58,41 +62,45 @@ class TypeHinting
      * Tests if array consists of elements given type.
      *
      * ## Usage example
+     * ```
+     * $array = [ 'string1', 'string2', 'string3' ];
      * TypeHinting::isArrayOfStrings($array);
+     * ```
      *
-     * @param  array  $arrayOfObjects Array to be checked.
-     * @param  bool   $acceptNulls    (opt., false) Set to true to also accept null values.
-     * @param  bool   $throw          (opt., true) Set to false to prevent throwing.
-     * @throws TypeHintingFailException
+     * @param array   $arrayOfObjects Array to be checked.
+     * @param boolean $acceptNulls    Opt., false. Set to true to also accept null values.
+     * @param boolean $throw          Opt., true. Set to false to prevent throwing.
+     *
+     * @throws TypeHintingFailException If this is not array of strings.
      * @since  v1.0
-     * @return bool
+     * @return boolean
      */
-    public static function isArrayOfStrings(array $arrayOfObjects, bool $acceptNulls=false, bool $throw=true) : bool
+    public static function isArrayOfStrings(array $arrayOfObjects, bool $acceptNulls = false, bool $throw = true) : bool
     {
 
-        // lvd
+        // Lvd.
         $test = true;
-        $isa = '';
+        $isa  = '';
 
-        // test
+        // Test.
         foreach ($arrayOfObjects as $object) {
 
-            $isNotString = (!is_string($object));
+            $isNotString = ( is_string($object) === false );
 
-            if ($acceptNulls === false) {
-                $isNotNull = true;
+            if ($acceptNulls === true) {
+                $isNotNull = false;
             } else {
-                $isNotNull = (!is_null($object));
+                $isNotNull = ( is_null($object) === false );
             }
 
             if ($isNotString === true && $isNotNull === true) {
                 $test = false;
-                $isa = gettype($object) . '[]';
+                $isa  = gettype($object) . '[]';
                 break;
             }
         }
 
-        // throw
+        // Throw.
         if ($throw === true && $test === false) {
             throw new TypeHintingFailException('string[]', $isa);
         }
@@ -104,31 +112,35 @@ class TypeHinting
      * Tests if array consists of elements given type.
      *
      * ## Usage example
-     * TypeHinting::isArrayOfStrings($array);
+     * ```
+     * $array = [ 5, true, 1.1, 'string' ];
+     * TypeHinting::isArrayOfScalars($array);
+     * ```
      *
-     * @param  array  $arrayOfObjects Array to be checked.
-     * @param  bool   $throw          (opt., true) Set to false to prevent throwing.
-     * @throws TypeHintingFailException
+     * @param array   $arrayOfObjects Array to be checked.
+     * @param boolean $throw          Opt., true. Set to false to prevent throwing.
+     *
+     * @throws TypeHintingFailException If this is not array of scalars.
      * @since  v1.0
-     * @return bool
+     * @return boolean
      */
-    public static function isArrayOfScalars(array $arrayOfObjects, bool $throw=true) : bool
+    public static function isArrayOfScalars(array $arrayOfObjects, bool $throw = true) : bool
     {
 
-        // lvd
+        // Lvd.
         $test = true;
-        $isa = '';
+        $isa  = '';
 
-        // test
+        // Test.
         foreach ($arrayOfObjects as $object) {
-            if (!is_scalar($object)) {
+            if (is_scalar($object) === false) {
                 $test = false;
-                $isa = gettype($object) . '[]';
+                $isa  = gettype($object) . '[]';
                 break;
             }
         }
 
-        // throw
+        // Throw.
         if ($throw === true && $test === false) {
             throw new TypeHintingFailException('scalar[]', $isa);
         }
