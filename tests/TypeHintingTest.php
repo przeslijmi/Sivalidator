@@ -20,9 +20,9 @@ final class TypeHintingTest extends TestCase
     {
 
         $array = [
-            (new \stdClass()),
-            (new \stdClass()),
-            (new \stdClass()),
+            ( new \stdClass() ),
+            ( new \stdClass() ),
+            ( new \stdClass() ),
         ];
 
         $this->assertTrue(TypeHinting::isArrayOf($array, 'stdClass'));
@@ -37,9 +37,9 @@ final class TypeHintingTest extends TestCase
     {
 
         $array = [
-            (new \stdClass()),
-            (new \stdClass()),
-            (new \stdClass()),
+            ( new \stdClass() ),
+            ( new \stdClass() ),
+            ( new \stdClass() ),
         ];
 
         $this->assertFalse(TypeHinting::isArrayOf($array, 'Other\Name', false));
@@ -73,9 +73,9 @@ final class TypeHintingTest extends TestCase
         $this->expectException(TypeHintingFailException::class);
 
         $array = [
-            (new \stdClass()),
-            (new \stdClass()),
-            (new \stdClass()),
+            ( new \stdClass() ),
+            ( new \stdClass() ),
+            ( new \stdClass() ),
         ];
 
         $this->assertFalse(TypeHinting::isArrayOf($array, 'Other\Name'));

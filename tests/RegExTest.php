@@ -61,7 +61,11 @@ final class RegExTest extends TestCase
         Regex::ifMatches('Hello 123', '/^([A-Za-z]+)$/');
     }
 
-
+    /**
+     * Test inproper type of first param of ifMatches throws.
+     *
+     * @return void
+     */
     public function testIfWrotypeThrows1() : void
     {
 
@@ -70,6 +74,11 @@ final class RegExTest extends TestCase
         Regex::ifMatches(new \stdClass(), '/^([A-Za-z]+)$/');
     }
 
+    /**
+     * Test inproper type of second param of ifMatches throws.
+     *
+     * @return void
+     */
     public function testIfWrotypeThrows2() : void
     {
 

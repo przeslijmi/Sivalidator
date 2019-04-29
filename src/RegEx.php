@@ -15,9 +15,9 @@ class RegEx
      *
      * ## Usage example
      * ```
-     * Regex::ifMatches('Hello', '/^([a-z])$/');        // will throw RegexTestFailException
-     * Regex::ifMatches('Hello', '/^([a-z])$/', false); // will return false
-     * Regex::ifMatches('Hello', '/^([a-zA-Z]+)$/');     // will return true
+     * RegEx::ifMatches('Hello', '/^([a-z]+)$/');        // will throw RegexTestFailException
+     * RegEx::ifMatches('Hello', '/^([a-z]+)$/', false); // will return false
+     * RegEx::ifMatches('Hello', '/^([a-zA-Z]+)$/');     // will return true
      * ```
      *
      * @param string  $what  String to search in.
