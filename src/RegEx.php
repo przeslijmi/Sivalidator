@@ -25,10 +25,10 @@ class RegEx
      * @param string  $regex Regular expression.
      * @param boolean $throw Opt., true. Set to false to prevent throwing.
      *
+     * @since  v1.0
      * @throws RegexTestFailException When RegEx will return false, and throwing is 'On'.
      * @throws ParamWrosynException   When second param (regex) is corrupted.
      * @throws ParamWrosynException   When second param (regex) is too short (<=2).
-     * @since  v1.0
      * @return boolean
      */
     public static function ifMatches(string $what, string $regex, bool $throw = true) : bool

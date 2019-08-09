@@ -23,8 +23,8 @@ class TypeHinting
      * @param string  $className      Name of the class that is expected.
      * @param boolean $throw          Opt., true. Set to false to prevent throwing.
      *
-     * @throws TypeHintingFailException If this is not array of given objects.
      * @since  v1.0
+     * @throws TypeHintingFailException If this is not array of given objects.
      * @return boolean
      */
     public static function isArrayOf(array $arrayOfObjects, string $className, bool $throw = true) : bool
