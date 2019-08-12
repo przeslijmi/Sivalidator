@@ -83,9 +83,14 @@ class RegEx
     public static function ifNotMatches(string $what, string $regex, bool $throw = true) : bool
     {
 
+        // Get test.
         $test = self::ifMatches($what, $regex, false);
 
-        if ($throw === true && $test === true) {
+        // Reverse it.
+        $test = ( ! $test );
+
+        // Serve excception.
+        if ($throw === true && $test === false) {
             throw new RegexTestFailException($what, 'OPPOSITE TO: ' . $regex);
         }
 
