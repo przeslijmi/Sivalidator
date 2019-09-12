@@ -140,7 +140,7 @@ class Date
         foreach ($foundMoves as $move) {
 
             // Lvd.
-            $amount = (int) substr($move, 0, -1);
+            $amount = (int) substr($move, 0, -1); // can be negative
             $unit   = (string) substr($move, -1);
 
             // Get starting date.
