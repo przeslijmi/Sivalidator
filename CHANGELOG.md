@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.0 - 2019-10-25
+
+- Added 100% code coverage report.
+
 ## v2.1.0 - 2019-09-12
 
 - Added new class `Date`.
