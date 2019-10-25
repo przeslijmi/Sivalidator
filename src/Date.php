@@ -174,6 +174,19 @@ class Date
     /**
      * Move date with given move description.
      *
+     * ## Usage example
+     * ```
+     * $date = ( new Date('2019') )->move('1Y');
+     * ```
+     *
+     * ## Possible units
+     * - `Y` - for year
+     * - `H` - for halfyear
+     * - `Q` - for quarter
+     * - `M` - for month
+     * - `W` - for week
+     * - `D` - for day
+     *
      * @param string $move Move description.
      *
      * @throws DateMoveWrongSyntaxException When move order has wrong syntax.
@@ -235,11 +248,8 @@ class Date
                 break;
 
                 case 'D':
-                    $moveDays = $amount;
-                break;
-
                 default:
-                    $moveDays = 0;
+                    $moveDays = $amount;
                 break;
             }//end switch
 
