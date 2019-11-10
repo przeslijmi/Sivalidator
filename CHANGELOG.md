@@ -1,5 +1,12 @@
 # Changelog
 
+## v2.2.1 - 2019-11-10
+
+- Added `build.sh.dist`.
+- Added `phpcs.xml`.
+- Added `phpunit.xml` to be more complete.
+- Changed `composer.json`.
+
 ## v2.2.0 - 2019-10-25
 
 - Added 100% code coverage report.
