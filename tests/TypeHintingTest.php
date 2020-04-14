@@ -4,6 +4,7 @@ namespace Przeslijmi\Sivalidator;
 
 use PHPUnit\Framework\TestCase;
 use Przeslijmi\Sexceptions\Exceptions\TypeHintingFailException;
+use stdClass;
 
 /**
  * Methods for testing values against type hinting class.
@@ -20,9 +21,9 @@ final class TypeHintingTest extends TestCase
     {
 
         $array = [
-            ( new \stdClass() ),
-            ( new \stdClass() ),
-            ( new \stdClass() ),
+            ( new stdClass() ),
+            ( new stdClass() ),
+            ( new stdClass() ),
         ];
 
         $this->assertTrue(TypeHinting::isArrayOf($array, 'stdClass'));
@@ -37,9 +38,9 @@ final class TypeHintingTest extends TestCase
     {
 
         $array = [
-            ( new \stdClass() ),
-            ( new \stdClass() ),
-            ( new \stdClass() ),
+            ( new stdClass() ),
+            ( new stdClass() ),
+            ( new stdClass() ),
         ];
 
         $this->assertFalse(TypeHinting::isArrayOf($array, 'Other\Name', false));
@@ -73,9 +74,9 @@ final class TypeHintingTest extends TestCase
         $this->expectException(TypeHintingFailException::class);
 
         $array = [
-            ( new \stdClass() ),
-            ( new \stdClass() ),
-            ( new \stdClass() ),
+            ( new stdClass() ),
+            ( new stdClass() ),
+            ( new stdClass() ),
         ];
 
         $this->assertFalse(TypeHinting::isArrayOf($array, 'Other\Name'));
@@ -130,7 +131,7 @@ final class TypeHintingTest extends TestCase
 
         $array = [ 'string1', 'string2', 'string3', null ];
 
-        $this->assertTrue(TypeHinting::isArrayOfStrings($array, false, false));
+        $this->assertTrue(TypeHinting::isArrayOfStrings($array, true, false));
     }
 
     /**

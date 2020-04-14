@@ -85,15 +85,13 @@ class TypeHinting
         // Test.
         foreach ($arrayOfObjects as $object) {
 
-            $isNotString = ( is_string($object) === false );
+            $isProblem = ( is_string($object) === false );
 
-            if ($acceptNulls === true) {
-                $isNotNull = false;
-            } else {
-                $isNotNull = ( is_null($object) === false );
+            if ($object === null && $acceptNulls === true) {
+                $isProblem = false;
             }
 
-            if ($isNotString === true && $isNotNull === true) {
+            if ($isProblem === true) {
                 $test = false;
                 $isa  = gettype($object) . '[]';
                 break;

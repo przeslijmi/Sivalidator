@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.2.2 - 2020-04-14
+
+- Added
+- Deleted `build.sh.dist`.
+
 ## v2.2.1 - 2019-11-10
 
 - Added `build.sh.dist`.

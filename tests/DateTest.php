@@ -143,8 +143,10 @@ final class DateTest extends TestCase
     public function testCreation($period, string $startDate, string $format) : void
     {
 
+        // Create.
         $date = new Date($period);
 
+        // Test.
         $this->assertEquals($startDate, $date->get());
         $this->assertEquals($format, $date->getFormat());
     }
@@ -152,9 +154,8 @@ final class DateTest extends TestCase
     /**
      * Test if moving works.
      *
-     * @param DataTime|string $period    Period to test.
-     * @param string          $startDate Calculated proper start date.
-     * @param string          $format    Calculated proper format of `$period`.
+     * @param string $move         What move to make from 2019-01-01.
+     * @param string $expectedDate What date is to be expected.
      *
      * @return void
      *
@@ -163,9 +164,11 @@ final class DateTest extends TestCase
     public function testMoving(string $move, string $expectedDate) : void
     {
 
+        // Create.
         $date = new Date('2019');
         $date->move($move);
 
+        // Test.
         $this->assertEquals($expectedDate, $date->get());
     }
 
@@ -183,9 +186,11 @@ final class DateTest extends TestCase
     public function testReturning(string $dateToTest, $returnFormat, $expectedReturn) : void
     {
 
+        // Lvd.
         $date = new Date($dateToTest);
 
-        if (is_null($returnFormat)) {
+        // Test.
+        if (is_null($returnFormat) === true) {
             $this->assertEquals($expectedReturn, $date->get());
         } else {
             $this->assertEquals($expectedReturn, $date->get($returnFormat));
@@ -200,8 +205,10 @@ final class DateTest extends TestCase
     public function testIfSendingWrongObjectThrows() : void
     {
 
+        // Prepare.
         $this->expectException(DateFormatWrongObjectException::class);
 
+        // Test.
         new Date(new stdClass());
     }
 
@@ -213,8 +220,10 @@ final class DateTest extends TestCase
     public function testIfSendingWrongDataTypeThrows() : void
     {
 
+        // Prepare.
         $this->expectException(DateFormatWrongObjectException::class);
 
+        // Test.
         new Date(true);
     }
 
@@ -230,8 +239,10 @@ final class DateTest extends TestCase
     public function testIfSendingWrongSyntaxedPeriodThrows(string $wrongPeriod) : void
     {
 
+        // Prepare.
         $this->expectException(DateFormatWrongException::class);
 
+        // Test.
         new Date($wrongPeriod);
     }
 
@@ -243,8 +254,10 @@ final class DateTest extends TestCase
     public function testIfMovingWithWrongUnitThrows() : void
     {
 
+        // Prepare.
         $this->expectException(DateMoveWrongSyntaxException::class);
 
+        // Test.
         $date = new Date('2019');
         $date->move('1T');
     }
@@ -257,8 +270,10 @@ final class DateTest extends TestCase
     public function testIfAskingForWrongReturnFormatThrows() : void
     {
 
+        // Prepare.
         $this->expectException(DateFormatReturnUnknownException::class);
 
+        // Test.
         $date = new Date('2019');
         $date->get('NonexistingPeriod');
     }

@@ -3,9 +3,11 @@
 namespace Przeslijmi\Sivalidator;
 
 use PHPUnit\Framework\TestCase;
-use Przeslijmi\Sexceptions\Exceptions\RegexTestFailException;
 use Przeslijmi\Sexceptions\Exceptions\ParamWrosynException;
+use Przeslijmi\Sexceptions\Exceptions\RegexTestFailException;
 use Przeslijmi\Sivalidator\RegEx;
+use stdClass;
+use TypeError;
 
 /**
  * Methods for testing values against regex syntax.
@@ -86,9 +88,9 @@ final class RegExTest extends TestCase
     public function testIfWrotypeThrows1() : void
     {
 
-        $this->expectException(\TypeError::class);
+        $this->expectException(TypeError::class);
 
-        Regex::ifMatches(new \stdClass(), '/^([A-Za-z]+)$/');
+        Regex::ifMatches(new stdClass(), '/^([A-Za-z]+)$/');
     }
 
     /**
@@ -99,7 +101,7 @@ final class RegExTest extends TestCase
     public function testIfWrotypeThrows2() : void
     {
 
-        $this->expectException(\TypeError::class);
+        $this->expectException(TypeError::class);
 
         Regex::ifMatches('aaa', true);
     }
