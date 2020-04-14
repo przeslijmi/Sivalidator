@@ -2,7 +2,8 @@
 
 ## v2.2.2 - 2020-04-14
 
-- Added
+- Added `shippable.yml`.
+- Added badges.
 - Deleted `build.sh.dist`.
 
 ## v2.2.1 - 2019-11-10
