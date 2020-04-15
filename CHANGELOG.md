@@ -1,5 +1,9 @@
 # Changelog
 
+## v2.2.3 - 2020-04-15
+
+- Updated `composer.json`.
+
 ## v2.2.2 - 2020-04-14
 
 - Added `shippable.yml`.
