@@ -1,7 +1,7 @@
 {
   "name": "przeslijmi/sivalidator",
   "description": "PHP library for validation of data types.",
-  "version": "v2.2.2",
+  "version": "v2.2.3",
   "type": "library",
   "license": "MIT",
   "authors": [
